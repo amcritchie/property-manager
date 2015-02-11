@@ -1,0 +1,13 @@
+<div class="row">
+  <div class="span12">
+    <% if session[:user_id] == nil %>
+        <%= render 'loggedOut' %>
+    <% else %>
+        <% if current_user.admin %>
+            <%= render 'admin' %>
+        <% else %>
+            <%= render 'loggedIn' %>
+        <% end %>
+    <% end %>
+  </div>
+</div>

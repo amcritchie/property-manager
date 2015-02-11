@@ -1,0 +1,79 @@
+<!-- Modal -->
+<div class="modal fade bs-modal-sm questions-modal" id="myModal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-md">
+    <div class="modal-content">
+      <br>
+
+      <div class="bs-example bs-example-tabs">
+        <ul id="myTab" class="nav nav-tabs">
+          <li class="active"><a href="#signin" data-toggle="tab">All questions</a></li>
+        </ul>
+      </div>
+      <div class="modal-body">
+        <div id="myTabContent" class="tab-content">
+
+          <div class="tab-pane fade active in" id="signin">
+
+            <%= form_for :question, as: :post, url: questions_new_path(:question), html: {class: 'newQuestionForm', data: {standard: 'fineDining'}} do |f| %>
+
+                <div class="col-xs-12 control-group">
+
+                  <div class="controls col-xs-2 hidden">
+                    <%= f.text_field :standards, :class => "form-control hidden", :placeholder => "fine", :value => 'fine_dining' %>
+                  </div>
+
+                  <div class="controls col-xs-2">
+                    <%= f.submit "Add +", :class => "btn btn-primary login addQuestion" %>
+                  </div>
+
+                  <div class="col-xs-7 controls">
+                    <%= f.text_field :body, :class => "form-control", :placeholder => "New question" %>
+                  </div>
+
+                  <div class="col-xs-3 controls">
+                    <%= f.select :sub_class, ["Low", "Medium", "High"] %>
+                  </div>
+                </div>
+
+            <% end %>
+            <br><br><br>
+
+            <% @all_questions.each do |question| %>
+
+                <div class="user-row col-xs-12" data-question-id="<%= question.id %>">
+
+                  <div class="col-xs-2 question-dropdown align-center">
+                    <button class="btn btn-sm btn-danger"
+                            type="button" data-toggle="tooltip"
+                            data-original-title="Remove this question">
+                      <i class="glyphicon glyphicon-remove"></i>
+                    </button>
+                    <button class="btn btn-sm btn-warning"
+                            type="button" data-toggle="tooltip"
+                            data-original-title="Edit this question">
+                      <i class="glyphicon glyphicon-edit"></i>
+                    </button>
+                  </div>
+
+                  <div class="col-xs-7 col-sm-7 col-md-7 col-lg-8">
+                    <strong><%= question.body %></strong>
+                  </div>
+
+                  <div class="col-xs-3 col-sm-3 col-md-3 col-lg-2">
+                    <strong><%= question.sub_class %></strong>
+                  </div>
+
+                </div>
+            <% end %>
+          </div>
+
+        </div>
+      </div>
+      <div class="modal-footer" style="border: 0">
+        <center>
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </center>
+      </div>
+    </div>
+  </div>
+</div>

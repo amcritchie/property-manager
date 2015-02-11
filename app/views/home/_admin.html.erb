@@ -1,0 +1,19 @@
+<h1>
+  Welcome back
+  <%= current_user.first_name.capitalize %>
+</h1>
+<br>
+<br>
+<br>
+<br>
+<%= render 'admin/evaluations' %>
+<%= render 'admin/evaluation' %>
+<%= link_to('Fine Dining', "#login", :data => {toggle: 'modal', target: ".questions-modal"}) %>
+<%= link_to('New Evaluation', "#login", :data => {toggle: 'modal', target: ".eval-modal"}) %>
+
+<br><br>
+<div class="container">
+    <div class="well col-xs-8 col-sm-8 col-md-8 col-lg-8 col-xs-offset-2 col-sm-offset-2 col-md-offset-2 col-lg-offset-2">
+      <%= render 'admin/users' %>
+    </div>
+</div>
