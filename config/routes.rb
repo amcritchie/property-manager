@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :clients
+
   resources :properties
 
   resources :users do
